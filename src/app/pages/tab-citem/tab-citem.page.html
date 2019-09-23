@@ -1,0 +1,33 @@
+<ion-header no-border>
+    <ion-toolbar>
+      <ion-title>
+        Nuevo ticket
+      </ion-title>
+  
+      <ion-buttons slot="end">
+        <ion-button (click)="crearItem()"
+                    [disabled]="item.concepto.length<1"
+                    color="primary">
+          Generar
+        </ion-button>
+      </ion-buttons>
+  
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <ion-list>
+      
+      <ion-item>
+        <ion-label position="floating">Concepto</ion-label>
+        <ion-textarea [(ngModel)]="item.concepto"></ion-textarea>
+        <ion-label position="floating">Importe</ion-label>
+        <ion-textarea [(ngModel)]="item.importe"></ion-textarea>
+      </ion-item>
+        
+    </ion-list>
+  
+    
+  </ion-content>
+  

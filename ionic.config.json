@@ -1,0 +1,8 @@
+{
+  "name": "e-ticket",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "ae74fe9b"
+}
