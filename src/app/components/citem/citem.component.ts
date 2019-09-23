@@ -9,7 +9,7 @@ import { Item } from 'src/app/interfaces/IComprobantes';
 export class CitemComponent implements OnInit {
 
   @Input() item: Item = {};
-
+  
   constructor() { }
 
   ngOnInit() {

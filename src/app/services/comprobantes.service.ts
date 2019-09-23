@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { RespuestaItems, Item } from '../interfaces/IComprobantes';
+import { RespuestaItems, Item, Comprobante } from '../interfaces/IComprobantes';
 import { UsuarioService } from './usuario.service';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 
@@ -11,7 +11,33 @@ const URL = environment.url;
 @Injectable({
   providedIn: 'root'
 })
+export class ComprobanteService {
 
+  nuevoComprobante = new EventEmitter<Comprobante>();
+
+  constructor( private http: HttpClient,
+    private usuarioService: UsuarioService ) { }
+
+  crearComprobante( comprobante ) {
+    const headers = new HttpHeaders({
+      'x-token': this.usuarioService.token
+    });
+
+    return new Promise( resolve => {
+
+      this.http.post(`${ URL }/comprobante`, comprobante, { headers })
+        .subscribe( resp => {
+          this.nuevoComprobante.emit( resp['comprobante'] );
+          resolve(true);
+        });
+    });
+
+  }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
 export class ItemsService {
 
   paginaComprobantes = 0;
@@ -44,7 +70,6 @@ export class ItemsService {
 
       this.http.post(`${ URL }/items`, item, { headers })
         .subscribe( resp => {
-
           this.nuevoItem.emit( resp['item'] );
           resolve(true);
         });

@@ -12,7 +12,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="light">
+<ion-content color="light" >
    
   <!-- Refresher -->
   <ion-refresher slot="fixed" (ionRefresh)="recargar( $event )">
@@ -20,7 +20,7 @@
   </ion-refresher>
 
   <!-- Items -->
-  <app-comprobante [items]="items"></app-comprobante>
+  <app-comprobante [items]="items" ></app-comprobante>
 
 
   <!-- Infinite Scroll -->

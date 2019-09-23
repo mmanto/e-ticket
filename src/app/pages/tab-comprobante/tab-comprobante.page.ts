@@ -1,8 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { ItemsService } from 'src/app/services/comprobantes.service';
-import { Item } from 'src/app/interfaces/IComprobantes';
+import { ItemsService, ComprobanteService } from 'src/app/services/comprobantes.service';
+import { Item, Comprobante } from 'src/app/interfaces/IComprobantes';
+import { ComprobanteComponent } from 'src/app/components/comprobante/comprobante.component';
 
 @Component({
   selector: 'app-tab-comprobante',
@@ -13,15 +14,29 @@ import { Item } from 'src/app/interfaces/IComprobantes';
 export class TabComprobantePage implements OnInit {
 
   items: Item[] = [];
+  comprobante: Comprobante;
 
   habilitado = true;
 
 
-  constructor(private itemsService: ItemsService) { }
+  constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService) { }
 
   ngOnInit() {
 
+    // Nuevo comprobante
+    this.comprobante = {
+      numero: '0000 0000 0000 0000',
+      nombreApellido: 'Martín Mantovani',
+      CUIT: '20230173932',
+      direccion: '142 N66'
+    };
+
     this.siguientes();
+    this.comprobanteService.nuevoComprobante.subscribe(
+      comprobante => {
+        this.comprobante = comprobante;
+        console.log('Comprobante: ' + this.comprobante.numero);
+    });
 
     this.itemsService.nuevoItem
       .subscribe(item => {
@@ -43,7 +58,7 @@ export class TabComprobantePage implements OnInit {
     this.itemsService.getItems(pull)
       .subscribe(resp => {
         console.log(resp);
-        this.items.push(...resp.items);
+        this.items.push( ...resp.items);
 
         if (event) {
           event.target.complete();

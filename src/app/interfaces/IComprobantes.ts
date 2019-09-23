@@ -15,8 +15,17 @@ export interface RespuestaItems {
 
   export interface Item {
     _id?: string;
+    comprobante?: string;
     concepto?: string;
     importe?: number;
     usuario?: Usuario;
     created?: string;
+  }
+
+  export interface Comprobante {
+    _id?: string;
+    numero: string;
+    nombreApellido: string;
+    CUIT: string;
+    direccion: string;
   }
