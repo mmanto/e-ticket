@@ -20,9 +20,9 @@ export class UsuarioService {
                private navCtrl: NavController ) { }
 
 
-  login( email: string, password: string ) {
+  login( cuit: string, password: string ) {
 
-    const data = { email, password };
+    const data = { cuit, password };
 
     return new Promise( resolve => {
 

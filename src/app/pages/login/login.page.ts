@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
   @ViewChild('slidePrincipal') slides: IonSlides;
 
   loginUser = {
+    cuit: '20230173932',
     email: 'martin.mantovani@gmail.com',
     password: '123456'
   };
@@ -39,7 +40,7 @@ export class LoginPage implements OnInit {
 
     if ( fLogin.invalid ) { return; }
 
-    const valido = await this.usuarioService.login( this.loginUser.email, this.loginUser.password );
+    const valido = await this.usuarioService.login( this.loginUser.cuit, this.loginUser.password );
 
     if ( valido ) {
       // navegar al tabs

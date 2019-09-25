@@ -20,10 +20,17 @@
                 <ion-list>
                   
                   <ion-item>
-                    <ion-label>Email</ion-label>
+                    <!-- <ion-label>Email</ion-label>
                     <ion-input name="email"
                                 type="email"
                                 [(ngModel)]="loginUser.email"
+                                required></ion-input>
+                  </ion-item> -->
+
+                  <ion-label>CUIT</ion-label>
+                    <ion-input name="cuit"
+                                type="string"
+                                [(ngModel)]="loginUser.cuit"
                                 required></ion-input>
                   </ion-item>
 
