@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemsService, ComprobanteService } from 'src/app/services/comprobantes.service';
 import { Item, Comprobante } from 'src/app/interfaces/IComprobantes';
 import { ComprobanteComponent } from 'src/app/components/comprobante/comprobante.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab-comprobante',
@@ -19,7 +20,7 @@ export class TabComprobantePage implements OnInit {
   habilitado = true;
 
 
-  constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService) { }
+  constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService, private route: Router) { }
 
   ngOnInit() {
 
@@ -71,4 +72,22 @@ export class TabComprobantePage implements OnInit {
       });
 
   }
+
+  async crearComprobante() {
+    console.log(this.comprobante);
+    const creado = await this.itemsService.crearItem( this.comprobante );
+
+    this.comprobante = {
+      CUIT: '',
+      nombreApellido: null,
+      direccion: '',
+      numero: ''
+  };
+
+    this.route.navigateByUrl('/main/tabs/tab-comprobante');
+
+  }
+
+
+
 }

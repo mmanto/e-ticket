@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from 'src/app/interfaces/IComprobantes';
+import { Item, Comprobante } from 'src/app/interfaces/IComprobantes';
 
 @Component({
   selector: 'app-citem',
@@ -9,6 +9,7 @@ import { Item } from 'src/app/interfaces/IComprobantes';
 export class CitemComponent implements OnInit {
 
   @Input() item: Item = {};
+  @Input() comprobante: Comprobante;
   
   constructor() { }
 

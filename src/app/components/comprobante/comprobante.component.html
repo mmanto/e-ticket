@@ -64,9 +64,9 @@
             <th width="20%">importe</th>
           </tr>
           <tr *ngFor="let item of items">
-            <td>{{ item.concepto }}</td>
-            <td>{{ item.importe }}</td>
-              <!-- <app-citem [item]="item"></app-citem> -->
+            <!-- <td>{{ item.concepto }}</td>
+            <td>{{ item.importe }}</td> -->
+              <app-citem [item]="item" [comprobante]="item.comprobante"></app-citem>
               
             </tr>
           <!--
@@ -100,6 +100,7 @@
             <td>$600</td>
           </tr>
         </table>
+        
       </div>
     </div>
   </ion-content>

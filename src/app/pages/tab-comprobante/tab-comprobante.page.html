@@ -19,10 +19,17 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-buttons slot="end">
+      <ion-button (click)="crearComprobante()"
+                  color="primary">
+        Generar
+      </ion-button>
+    </ion-buttons>
+
+
   <!-- Items -->
-  <app-comprobante [items]="items" ></app-comprobante>
-
-
+  <app-comprobante [items]="items" [comprobante]="comprobante" ></app-comprobante>
+  
   <!-- Infinite Scroll -->
 
   <ion-infinite-scroll  [disabled]="!habilitado"
