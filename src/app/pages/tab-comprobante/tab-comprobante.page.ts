@@ -27,9 +27,16 @@ export class TabComprobantePage implements OnInit {
     // Nuevo comprobante
     this.comprobante = {
       numero: '0000 0000 0000 0000',
-      nombreApellido: 'Martín Mantovani',
-      CUIT: '20230173932',
-      direccion: '142 N66'
+      nombre: 'Martín Mantovani',
+      cuit: '20230173932',
+      tipo: null,
+      importeTotal: 3000,
+      items: [{
+        created: null,
+        concepto: '',
+        importe: 0
+      }]
+
     };
 
     this.siguientes();
@@ -78,11 +85,18 @@ export class TabComprobantePage implements OnInit {
     const creado = await this.itemsService.crearItem( this.comprobante );
 
     this.comprobante = {
-      CUIT: '',
-      nombreApellido: null,
-      direccion: '',
-      numero: ''
-  };
+      numero: '0000 0000 0000 0000',
+      nombre: 'Martín Mantovani',
+      cuit: '20230173932',
+      tipo: null,
+      importeTotal: 3000,
+      items: [{
+        created: null,
+        concepto: "",
+        importe: 0,
+      }]
+
+    };
 
     this.route.navigateByUrl('/main/tabs/tab-comprobante');
 
