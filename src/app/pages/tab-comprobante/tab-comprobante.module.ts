@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { TabComprobantePage } from './tab-comprobante.page';
 import { ComponentsModule } from '../../components/components.module';
+import {AddItemModalComponent} from './add-item-modal/add-item-modal.component';
 
 const routes: Routes = [
   {
@@ -21,9 +22,13 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ComponentsModule,
+    ReactiveFormsModule,
     // RouterModule.forChild(routes)
     RouterModule.forChild([{ path: '', component: TabComprobantePage }])
   ],
-  declarations: [TabComprobantePage]
+  declarations: [TabComprobantePage, AddItemModalComponent],
+  entryComponents: [
+    AddItemModalComponent
+  ]
 })
 export class TabComprobantePageModule {}

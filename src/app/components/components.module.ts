@@ -7,9 +7,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { CitemComponent } from './citem/citem.component';
-import { ComprobanteComponent } from './comprobante/comprobante.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import {AddItemModalComponent} from './comprobante/add-item-modal/add-item-modal.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
 
@@ -21,15 +19,11 @@ import {ReactiveFormsModule} from '@angular/forms';
     AvatarSelectorComponent,
     MapaComponent,
     CitemComponent,
-    ComprobanteComponent,
-    AddItemModalComponent
     ],
   exports: [
     PostsComponent,
-    ComprobanteComponent,
     AvatarSelectorComponent,
     CitemComponent,
-    AddItemModalComponent
     ],
   imports: [
     CommonModule,
@@ -37,9 +31,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     PipesModule,
     NgxDatatableModule,
     ReactiveFormsModule
-  ],
-    entryComponents: [
-        AddItemModalComponent
-    ]
+  ]
 })
 export class ComponentsModule { }

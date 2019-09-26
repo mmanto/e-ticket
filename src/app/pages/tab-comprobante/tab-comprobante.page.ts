@@ -2,9 +2,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ItemsService, ComprobanteService } from 'src/app/services/comprobantes.service';
-import { Item, Comprobante } from 'src/app/interfaces/IComprobantes';
-import { ComprobanteComponent } from 'src/app/components/comprobante/comprobante.component';
+import {Item, Comprobante, ItemComprobante} from 'src/app/interfaces/IComprobantes';
 import { Router } from '@angular/router';
+import {ModalController} from '@ionic/angular';
+import {AddItemModalComponent} from './add-item-modal/add-item-modal.component';
 
 @Component({
   selector: 'app-tab-comprobante',
@@ -16,11 +17,12 @@ export class TabComprobantePage implements OnInit {
 
   items: Item[] = [];
   comprobante: Comprobante;
-
+  new_items: ItemComprobante[] = [];
   habilitado = true;
 
 
-  constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService, private route: Router) { }
+  constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService, private route: Router,
+              public modalController: ModalController) { }
 
   ngOnInit() {
 
@@ -80,7 +82,7 @@ export class TabComprobantePage implements OnInit {
 
   }
 
-  async crearComprobante() {
+  /*async crearComprobante() {
     console.log(this.comprobante);
     const creado = await this.itemsService.crearItem( this.comprobante );
 
@@ -100,6 +102,26 @@ export class TabComprobantePage implements OnInit {
 
     this.route.navigateByUrl('/main/tabs/tab-comprobante');
 
+  }*/
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: AddItemModalComponent
+    });
+    modal.onDidDismiss().then((result) => {
+      this.new_items.push(result.data);
+      console.log(this.new_items);
+    });
+    return await modal.present();
+  }
+
+  crearComprobante() {
+    this.comprobante.items = this.new_items;
+    this.comprobanteService.crearComprobanteNew(this.comprobante).subscribe(res => {
+      console.log(res);
+      this.new_items = [];
+    });
+    // console.log(this.comprobante);
   }
 
 
