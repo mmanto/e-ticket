@@ -24,8 +24,16 @@ export interface RespuestaItems {
 
   export interface Comprobante {
     _id?: string;
+    nombre: string;
+    tipo: number;
+    cuit: string;
     numero: string;
-    nombreApellido: string;
-    CUIT: string;
-    direccion: string;
+    importeTotal: number;
+    items: ItemComprobante[];
+  }
+
+  export interface ItemComprobante {
+    created: Date;
+    concepto: string;
+    importe: number;
   }

@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { RespuestaItems, Item, Comprobante } from '../interfaces/IComprobantes';
 import { UsuarioService } from './usuario.service';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import {Observable} from 'rxjs';
 
 const URL = environment.url;
 
@@ -33,6 +34,13 @@ export class ComprobanteService {
     });
 
   }
+
+    crearComprobanteNew(comprobante): Observable<any> {
+        const headers = new HttpHeaders({
+            'x-token': this.usuarioService.token
+        });
+        return this.http.post<Comprobante>(`${URL}/comprobante`, comprobante, {headers});
+    }
 }
 
 @Injectable({

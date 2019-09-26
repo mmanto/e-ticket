@@ -5,6 +5,9 @@
         Invoice
       </ion-title>
       <ion-buttons slot="primary">
+        <ion-button color="primary" (click)="crearComprobante()">
+          <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+        </ion-button>
         <ion-button color="primary" (click)="exportPdf()">
           <ion-icon slot="icon-only" name="print"></ion-icon>
         </ion-button>
@@ -55,7 +58,12 @@
             </td>
           </tr>
         </table>
-        <h3>Detalle factura</h3>
+        <div style="display: flex; flex-direction: row; width: 100%" justify-content-center align-items-center>
+          <h3 style="display: flex; flex-grow: 1">Detalle factura</h3>
+<!--          <ion-icon style="display: flex; margin: 20px 10px 10px 0; float: right;" name="add-circle" size="large"></ion-icon>-->
+          <ion-button (click)="presentModal()">Add Item</ion-button>
+        </div>
+
         <table class="detail-table">
           <tr>
             <th width="50%">Descripción</th>
@@ -63,12 +71,15 @@
             <!-- <th width="10%">Cantidad</th> -->
             <th width="20%">importe</th>
           </tr>
-          <tr *ngFor="let item of items">
+          <tr *ngFor="let item of new_items">
             <!-- <td>{{ item.concepto }}</td>
             <td>{{ item.importe }}</td> -->
-              <app-citem [item]="item" [comprobante]="item.comprobante"></app-citem>
-              
-            </tr>
+<!--              <app-citem [item]="item" [comprobante]="item.comprobante"></app-citem>-->
+
+            <td> {{ item.concepto }}</td>
+            <td> {{ item.importe }}</td>
+
+          </tr>
           <!--
             <tr>
             <td>Apple Macbook Pro Retina 2018</td>

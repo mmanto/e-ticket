@@ -1,0 +1,21 @@
+<div padding>
+    <form [formGroup]="newItemForm" (ngSubmit)="onDismiss()" novalidate>
+        <ion-item>
+            <ion-label position="floating">Concepto</ion-label>
+            <ion-input type="text" formControlName="concepto"></ion-input>
+        </ion-item>
+        <!--<ion-item>
+            <span *ngIf="concepto.invalid && concepto.errors.required"
+                  style="color: firebrick; float: right; font-size: 1.5rem">El campo concepto es obligatorio.</span>
+        </ion-item>-->
+            <ion-item>
+            <ion-label position="floating">Importe</ion-label>
+            <ion-input type="text" formControlName="importe"></ion-input>
+        </ion-item>
+
+        <ion-button type="submit" [disabled]="!newItemForm.valid">Add item</ion-button>
+    </form>
+
+</div>
+
+
