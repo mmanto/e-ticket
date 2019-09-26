@@ -92,7 +92,7 @@ export class TabComprobantePage implements OnInit {
       importeTotal: 3000,
       items: [{
         created: null,
-        concepto: "",
+        concepto: '',
         importe: 0,
       }]
 
