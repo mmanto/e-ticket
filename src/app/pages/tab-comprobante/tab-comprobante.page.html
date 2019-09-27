@@ -46,6 +46,58 @@
 
   <ion-content padding>
     <div class="printable-content">
+      <div >
+        <ion-card>
+          <ion-card-content class="ticket-card">
+            <h2><b>Razon Social - nombre y apellido</b></h2>
+            <p>Domicilio - calle numero Localidad Pcia</p>
+            <p>Cuit Nro - {{comprobante.cuit}}</p>
+            <p>I B Nro - {{comprobante.cuit}}</p>
+            <p>Inicio actividad: 01-01-2018</p>
+            <p>Responsable: Monotributo</p>
+
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-content class="ticket-card">
+            <h2><i><b>DATOS DE COMPROBANTE ELECTRONICO EMITIDO</b></i></h2>
+            <p>COMPROBA LA LEGALIDAD DEL COMPROBANTE INGRESANDO EN</p>
+            <h2 style="padding: 10px 0"><i><b>Y LUEGO CARGA ESTOS DATOS</b></i></h2>
+            <p>Cuit del vendedor: {{comprobante.cuit}}</p>
+            <p>Nro de CAE: 12345678912345</p>
+            <p>Fecha de Emision del Comprobante: 01-01-2018</p>
+            <p>Tipo de comprobante: {{comprobante.tipo}}</p>
+            <p>Punto de venta: 00002</p>
+            <p>Numero de comprobante: {{comprobante.numero}}</p>
+            <p>Tipo y Nro de documento del receptor: DNI 22333444</p>
+
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-item>
+<!--            <ion-icon name="pin" slot="start"></ion-icon>-->
+            <ion-label><h2>Detalles de la factura</h2></ion-label>
+            <ion-button fill="outline" slot="end" (click)="presentModal()">Add Item</ion-button>
+          </ion-item>
+
+          <ion-card-content>
+            <table class="detail-table" *ngIf="new_items.length">
+              <tr>
+                <th width="50%">Descripción</th>
+                <!-- <th width="20%">Precion Unitario</th> -->
+                <!-- <th width="10%">Cantidad</th> -->
+                <th width="20%">Importe</th>
+              </tr>
+              <tr *ngFor="let item of new_items">
+                <td> {{ item.concepto }}</td>
+                <td> {{ item.importe }}</td>
+              </tr>
+            </table>
+            <h2  *ngIf="!new_items.length">No existen items asociados al comprobante</h2>
+          </ion-card-content>
+        </ion-card>
+      </div>
       <div class="printable-area" id="printable-area">
         <table class="header-table">
           <tr>
@@ -98,7 +150,7 @@
             <th width="50%">Descripción</th>
             <!-- <th width="20%">Precion Unitario</th> -->
             <!-- <th width="10%">Cantidad</th> -->
-            <th width="20%">importe</th>
+            <th width="20%">Importe</th>
           </tr>
           <tr *ngFor="let item of new_items">
             <!-- <td>{{ item.concepto }}</td>

@@ -57,24 +57,7 @@ ion-content {
           }
         }
       }
-      .detail-table {
-        margin: 2%;
-        width: 96%;
-        border-top: 2px solid #CCC;
-        border-bottom: 2px solid #CCC;
-        th, td {
-          padding: 5px;
-        }
-        th {
-          border-bottom: 2px solid #CCC;
-        }
-        td:nth-child(2), td:nth-child(4) {
-          text-align: right;
-        }
-        td:nth-child(3) {
-          text-align: center;
-        }
-      }
+
       .footer-table {
         margin: 2%;
         width: 96%;
@@ -84,6 +67,31 @@ ion-content {
           font-weight: bold;
         }
       }
+    }
+  }
+
+  .ticket-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-table {
+    margin: 2%;
+    width: 96%;
+    border-top: 2px solid #CCC;
+    border-bottom: 2px solid #CCC;
+    th, td {
+      padding: 5px;
+    }
+    th {
+      border-bottom: 2px solid #CCC;
+    }
+    td:nth-child(2), td:nth-child(4) {
+      text-align: right;
+    }
+    td:nth-child(3) {
+      text-align: center;
     }
   }
 }
