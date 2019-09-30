@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'main/tabs/tab1'
+    redirectTo: 'main/tabs/tab-comprobante'
   },
   { path: 'tab-comprobante', loadChildren: './pages/tab-comprobante/tab-comprobante.module#TabComprobantePageModule' },
   { path: 'tab-citem', loadChildren: './pages/tab-citem/tab-citem.module#TabCitemPageModule' }
