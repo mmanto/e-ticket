@@ -12,7 +12,7 @@ import { Usuario } from '../../interfaces/interfaces';
 })
 export class LoginPage implements OnInit {
 
-  @ViewChild('slidePrincipal') slides: IonSlides;
+  @ViewChild('slidePrincipal', {static: true}) slides: IonSlides;
 
   loginUser = {
     cuit: '20230173932',

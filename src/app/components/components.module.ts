@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { PipesModule } from '../pipes/pipes.module';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
-import { MapaComponent } from './mapa/mapa.component';
 import { CitemComponent } from './citem/citem.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -13,7 +12,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AvatarSelectorComponent,
-    MapaComponent,
     CitemComponent,
     ],
   exports: [
