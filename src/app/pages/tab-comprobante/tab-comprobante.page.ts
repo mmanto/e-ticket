@@ -6,6 +6,7 @@ import {Item, Comprobante, ItemComprobante} from 'src/app/interfaces/IComprobant
 import { Router } from '@angular/router';
 import {ModalController} from '@ionic/angular';
 import {AddItemModalComponent} from './add-item-modal/add-item-modal.component';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-tab-comprobante',
@@ -19,7 +20,8 @@ export class TabComprobantePage implements OnInit {
   comprobante: Comprobante;
   new_items: ItemComprobante[] = [];
   habilitado = true;
-
+  newItemForm: FormGroup;
+  showItemForm = false;
 
   constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService, private route: Router,
               public modalController: ModalController) { }
@@ -54,6 +56,11 @@ export class TabComprobantePage implements OnInit {
         this.items.unshift(item);
 
       });
+
+    this.newItemForm = new FormGroup({
+      'concepto': new FormControl('', [Validators.required]),
+      'importe': new FormControl('')
+    });
   }
 
   recargar(event) {
@@ -122,6 +129,21 @@ export class TabComprobantePage implements OnInit {
       this.new_items = [];
     });
     // console.log(this.comprobante);
+  }
+
+  adcionarItem() {
+    this.newItemForm.value.created = new Date();
+    this.new_items.push(this.newItemForm.value);
+    this.showItemForm = false;
+    this.newItemForm.reset();
+  }
+
+  get concepto() {
+    return this.newItemForm.get('concepto');
+  }
+
+  get importe() {
+    return this.newItemForm.get('importe');
   }
 
 

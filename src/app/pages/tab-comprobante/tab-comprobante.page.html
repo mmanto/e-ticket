@@ -78,16 +78,38 @@
           <ion-item>
 <!--            <ion-icon name="pin" slot="start"></ion-icon>-->
             <ion-label><h2>Detalles de la factura</h2></ion-label>
-            <ion-button fill="outline" slot="end" (click)="presentModal()">Add Item</ion-button>
+            <ion-button fill="outline" slot="end" (click)="showItemForm = true" *ngIf="!showItemForm">Add Item</ion-button>
+            <ion-button fill="outline" slot="end" (click)="adcionarItem()" *ngIf="showItemForm">Save</ion-button>
           </ion-item>
 
-          <ion-card-content>
-            <table class="detail-table" *ngIf="new_items.length">
+          <ion-card-content [ngClass]="{'items-form': showItemForm}">
+            <form [formGroup]="newItemForm" novalidate *ngIf="showItemForm">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label position="floating">Concepto</ion-label>
+                      <ion-input type="text" formControlName="concepto"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label position="floating">Importe</ion-label>
+                      <ion-input type="text" formControlName="importe"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                </ion-row>
+              </ion-grid>
+
+
+            </form>
+            <table class="striped" *ngIf="new_items.length">
               <tr>
-                <th width="50%">Descripción</th>
+                <th width="70%">Descripción</th>
                 <!-- <th width="20%">Precion Unitario</th> -->
                 <!-- <th width="10%">Cantidad</th> -->
-                <th width="20%">Importe</th>
+                <th width="30%">Importe</th>
               </tr>
               <tr *ngFor="let item of new_items">
                 <td> {{ item.concepto }}</td>

@@ -94,4 +94,48 @@ ion-content {
       text-align: center;
     }
   }
+
+  table.striped {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+    }
+
+    tr:nth-child(1) {
+      background-color: #7e6992;
+      color: white;
+      th {
+        text-align: center;
+        &:nth-child(1){
+          width: 70%;
+        }
+        &:nth-child(2){
+          width: 30%;
+        }
+      }
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2
+    }
+
+    td:nth-child(1) {
+      text-align: left;
+    }
+
+    td:nth-child(2) {
+      text-align: right;
+    }
+  }
+
+  ion-card-content.items-form {
+    padding-top: 0;
+  }
+
+
 }
