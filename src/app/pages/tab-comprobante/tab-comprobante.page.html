@@ -119,6 +119,13 @@
             <h2  *ngIf="!new_items.length">No existen items asociados al comprobante</h2>
           </ion-card-content>
         </ion-card>
+        <ion-card>
+          <ion-card-content class="ticket-card">
+            <h2><i><b>QR code aqui</b></i></h2>
+            <ngx-qrcode id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "value" qrc-class="qr-class">
+            </ngx-qrcode>
+          </ion-card-content>
+        </ion-card>
       </div>
       <div class="printable-area" id="printable-area">
         <table class="header-table">

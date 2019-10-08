@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { TabComprobantePage } from './tab-comprobante.page';
 import { ComponentsModule } from '../../components/components.module';
 import {AddItemModalComponent} from './add-item-modal/add-item-modal.component';
+import {NgxQRCodeModule} from 'ngx-qrcode2';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     IonicModule,
     ComponentsModule,
     ReactiveFormsModule,
+    NgxQRCodeModule,
     // RouterModule.forChild(routes)
     RouterModule.forChild([{ path: '', component: TabComprobantePage }])
   ],

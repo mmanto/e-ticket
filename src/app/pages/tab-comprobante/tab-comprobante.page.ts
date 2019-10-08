@@ -22,6 +22,8 @@ export class TabComprobantePage implements OnInit {
   habilitado = true;
   newItemForm: FormGroup;
   showItemForm = false;
+  elementType: 'url' | 'canvas' | 'img' = 'url';
+  value = 'Url: http://localhost:4200/main/tabs/tab-comprobante \n Nro Usuario: 89500 \n Nro comprobante: 78998874';
 
   constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService, private route: Router,
               public modalController: ModalController) { }
