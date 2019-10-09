@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import {ModalController} from '@ionic/angular';
 import {AddItemModalComponent} from './add-item-modal/add-item-modal.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Usuario } from 'src/app/interfaces/interfaces';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-tab-comprobante',
@@ -18,6 +20,7 @@ export class TabComprobantePage implements OnInit {
 
   items: Item[] = [];
   comprobante: Comprobante;
+  usuario: Usuario;
   new_items: ItemComprobante[] = [];
   habilitado = true;
   newItemForm: FormGroup;
@@ -26,7 +29,7 @@ export class TabComprobantePage implements OnInit {
   value = 'Url: http://localhost:4200/main/tabs/tab-comprobante \n Nro Usuario: 89500 \n Nro comprobante: 78998874';
 
   constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService, private route: Router,
-              public modalController: ModalController) { }
+              public modalController: ModalController, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
 
@@ -45,6 +48,7 @@ export class TabComprobantePage implements OnInit {
 
     };
 
+    this.usuario = this.usuarioService.getUsuario();
     this.siguientes();
     this.comprobanteService.nuevoComprobante.subscribe(
       comprobante => {

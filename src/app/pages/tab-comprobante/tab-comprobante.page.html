@@ -49,12 +49,12 @@
       <div >
         <ion-card>
           <ion-card-content class="ticket-card">
-            <h2><b>Razon Social - nombre y apellido</b></h2>
-            <p>Domicilio - calle numero Localidad Pcia</p>
-            <p>Cuit Nro - {{comprobante.cuit}}</p>
-            <p>I B Nro - {{comprobante.cuit}}</p>
-            <p>Inicio actividad: 01-01-2018</p>
-            <p>Responsable: Monotributo</p>
+            <h2><b>Razon Social - {{ usuario.nombre }}</b></h2>
+            <p>Domicilio - {{ usuario.domicilioCalle }} {{ usuario.domicilioNumero }} {{ usuario.domicilioLocalidad }} {{ usuario.domicilioProvincia }}</p>
+            <p>Cuit Nro - {{ comprobante.cuit }}</p>
+            <p>I B Nro - {{ comprobante.cuit }}</p>
+            <p>Inicio actividad: {{ usuario.inicioActividad }}</p>
+            <p>Responsable: {{ usuario.respAnteIva }}</p>
 
           </ion-card-content>
         </ion-card>

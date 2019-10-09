@@ -22,13 +22,13 @@ export class UsuarioService {
 
   login( cuit: string, password: string ) {
 
-    const data = { cuit, password };
+
+    const data = { cuit, password, user:this.usuario };
 
     return new Promise( resolve => {
 
       this.http.post(`${ URL }/user/login`, data )
         .subscribe( async resp => {
-          console.log(resp);
 
           if ( resp['ok'] ) {
             await this.guardarToken( resp['token'] );
