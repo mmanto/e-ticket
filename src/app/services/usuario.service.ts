@@ -106,7 +106,7 @@ export class UsuarioService {
 
 
   async validaToken(): Promise<boolean> {
-
+    return Promise.resolve(true);
     await this.cargarToken();
 
     if ( !this.token ) {
