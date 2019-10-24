@@ -37,7 +37,7 @@
         <ion-button color="primary" (click)="crearComprobante()">
           <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
         </ion-button>
-        <ion-button color="primary" (click)="exportPdf()">
+        <ion-button color="primary" (click)="imprimirComprobante()">
           <ion-icon slot="icon-only" name="print"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -49,6 +49,8 @@
       <div >
         <ion-card>
           <ion-card-content class="ticket-card">
+            <img [src]="img_url">
+            <h1>{{printMessage}}</h1>
             <h2><b>Razon Social - {{ usuario.nombre }}</b></h2>
             <p>Domicilio - {{ usuario.domicilioCalle }} {{ usuario.domicilioNumero }} {{ usuario.domicilioLocalidad }} {{ usuario.domicilioProvincia }}</p>
             <p>Cuit Nro - {{ comprobante.cuit }}</p>

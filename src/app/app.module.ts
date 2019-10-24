@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import {Printer} from '@ionic-native/printer/ngx';
 
 
 
@@ -35,7 +36,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
     SplashScreen,
     Geolocation,
     Camera,
-    FileTransfer,
+    FileTransfer, Printer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
