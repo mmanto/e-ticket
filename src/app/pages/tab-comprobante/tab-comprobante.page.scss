@@ -138,5 +138,9 @@ ion-content {
     padding-top: 0;
   }
 
+  //Se le inserta un margen porque sale el tab-bar por encima del card
+  .qr-card {
+    margin-bottom: 40px; //(56px del tab-bar menos 16px del padding bottom del contenedor principal)
+  }
 
 }

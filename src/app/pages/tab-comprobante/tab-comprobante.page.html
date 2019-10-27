@@ -120,7 +120,7 @@
             <h2  *ngIf="!new_items.length">No existen items asociados al comprobante</h2>
           </ion-card-content>
         </ion-card>
-        <ion-card>
+        <ion-card class="qr-card">
           <ion-card-content class="ticket-card">
             <h2><i><b>O ESCANEA EL CODIGO PARA DESCARGAR TU COMPROBANTE EN PDF</b></i></h2>
             <ngx-qrcode id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "value" qrc-class="qr-class">
