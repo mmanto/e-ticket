@@ -17,7 +17,6 @@ import {Printer, PrintOptions} from '@ionic-native/printer/ngx';
 })
 
 export class TabComprobantePage implements OnInit {
-
     items: Item[] = [];
     comprobante: Comprobante;
     usuario: Usuario;
@@ -28,50 +27,22 @@ export class TabComprobantePage implements OnInit {
     elementType: 'url' | 'canvas' | 'img' = 'url';
     value = 'Url: http://localhost:4200/main/tabs/tab-comprobante \n Nro Usuario: 89500 \n Nro comprobante: 78998874';
     printMessage = '';
-    // img_url = './assets/perro-1.jpg';
-    img_url = './assets/icon/favicon.png';
 
     constructor(private itemsService: ItemsService, private comprobanteService: ComprobanteService, private route: Router,
                 public modalController: ModalController, private usuarioService: UsuarioService, private printer: Printer) {
     }
 
     imprimirComprobante() {
-        /*this.printer.check().then((p) => {
-            // this.printMessage = p.available ? 'Found ' + p.count + ' services' : 'No';
-            this.printMessage = p.count + ' services - Avaliable: ' + p.available;
-        }).catch(error => {
-            this.printMessage = error;
-        });*/
-        /*this.printer.isAvailable().then(function() {
-            this.printer.pick((uri) => {
-                this.printMessage = uri ? uri : 'Canceled';
-            });
-            /!*this.printer.print('Esto es una prueba').then(function(){
-                this.printMessage = 'printing done successfully !';
-            }, function() {
-                this.printMessage = 'Error while printing !';
-            });*!/
-        }, function(e) {
-            console.log(e);
-            this.printMessage = 'Error : printing is unavailable on your device';
-        });*/
-
-        /*this.printer.isAvailable().then(value => {
-            this.printMessage = 'IMPRIMIENDO';
-
-        }).catch(error => {
-            this.printMessage = error;
-        });*/
+        const print_template = document.getElementById('print-template');
         const options: PrintOptions = {
             name: 'MyDocument',
             printerId: 'printer007',
             duplex: true,
-            landscape: true,
+            landscape: false,
             grayscale: true
         };
-
-        this.printer.print('<h1>Hello World!</h1>', options).then(() => this.printMessage = 'SUCCESS',
-            () => this.printMessage = 'ERROR');
+        this.printer.print(print_template, options).then(() => this.onSuccess(),
+            () => this.onError());
     }
 
     onSuccess() {
