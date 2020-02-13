@@ -137,6 +137,13 @@ export class TabComprobantePage implements OnInit {
     // console.log(this.comprobante);
   }
 
+  crearComprobante2(){
+    this.comprobanteService.crearComprobanteNew2(this.comprobante).subscribe(res => {
+      console.log(res);
+      this.new_items = [];
+    });
+  }
+
   adcionarItem() {
     this.newItemForm.value.created = new Date();
     this.new_items.push(this.newItemForm.value);
