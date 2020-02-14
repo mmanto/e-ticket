@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { RespuestaItems, Item, Comprobante } from '../interfaces/IComprobantes';
 import { UsuarioService } from './usuario.service';
@@ -57,9 +57,14 @@ export class ComprobanteService {
                       'importe_exento_iva' : '0',
                       'importe_iva': '21',
                       'cuit': '20230173932'
-                    };
+                     };
+      //var body = 'punto_venta=1&tipo_factura=6&password=mypassword';
+      
+      let body: HttpParams = new HttpParams();
+      body = body.append('punto_venta', '1');
+      body = body.append('tipo_factrua', '6');
 
-      return this.http.post<Comprobante>(`http://localhost/eticket-server/comprobante.php`, comprobante, {headers});
+      return this.http.post(`http://localhost/eticket-server/comprobante.php`, body, {headers});
   }
 }
 
