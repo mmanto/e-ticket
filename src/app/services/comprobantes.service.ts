@@ -42,30 +42,21 @@ export class ComprobanteService {
         return this.http.post<Comprobante>(`${URL}/comprobante`, comprobante, {headers});
     }
 
-  crearComprobanteNew2(comprobante): Observable<any> {
-      const headers = new HttpHeaders({
-          // 'x-token': this.usuarioService.token
-          'Content-Type' : 'form-data'
-      });
+    crearComprobanteNew2(comprobante): Observable<any> {
+        const ticket = {
+            punto_venta: '1',
+            tipo_factura: '6',
+            concepto: '1',
+            tipo_documento: '99',
+            numero_documento: '0',
+            importe_gravado: '100',
+            importe_exento_iva: '0',
+            importe_iva: '21',
+            cuit: '20230173932'
+        };
 
-      comprobante = { 'punto_venta': '1',
-                      'tipo_factura':'6',
-                      'concepto': '1',
-                      'tipo_documento': '99',
-                      'numero_documento': '0',
-                      'importe_gravado' : '100',
-                      'importe_exento_iva' : '0',
-                      'importe_iva': '21',
-                      'cuit': '20230173932'
-                     };
-      //var body = 'punto_venta=1&tipo_factura=6&password=mypassword';
-      
-      let body: HttpParams = new HttpParams();
-      body = body.append('punto_venta', '1');
-      body = body.append('tipo_factrua', '6');
-
-      return this.http.post(`http://localhost/eticket-server/comprobante.php`, body, {headers});
-  }
+        return this.http.post(`http://localhost/eticket/comprobante2`, ticket);
+    }
 }
 
 @Injectable({
